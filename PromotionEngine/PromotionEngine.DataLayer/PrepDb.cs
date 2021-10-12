@@ -1,13 +1,12 @@
 ﻿using Microsoft.AspNetCore.Builder;
-using System;
 using Microsoft.Extensions.DependencyInjection;
 using System.Linq;
-using System.Threading.Tasks;
 using PromotionEngine.Models;
+using System.Collections.Generic;
 
 namespace PromotionEngine.PromotionEngine.DataLayer
 {
-    public class PrepDb
+    public static class PrepDb
     {
         public static void PrepPoulation(IApplicationBuilder app)
         {
@@ -21,11 +20,10 @@ namespace PromotionEngine.PromotionEngine.DataLayer
             if (!context.Promotions.Any())
             {
                 context.Promotions.AddRange(
-                    new Promotion() {  },
-                    new Promotion() {  },
-                    new Promotion() {  }
+                    new Promotion() { Id = 1, Amount = 130, PromoProducts = new Dictionary<string, int>() { {"A", 3 } } },
+                    new Promotion() { Id = 2, Amount = 45, PromoProducts = new Dictionary<string, int>() { {"B", 2 } } },
+                    new Promotion() { Id = 3, Amount = 30, PromoProducts = new Dictionary<string, int>() { {"C", 1 }, {"D", 1 } } }
                 );
-
                 context.SaveChanges();
             }
 

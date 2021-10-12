@@ -1,16 +1,30 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using PromotionEngine.Models;
+using PromotionEngine.PromotionEngine.BusinessLayer;
+
 
 namespace PromotionEngine.Controllers
 {
+    [Route("api/[controller]")]
     public class PromotionController : Controller
     {
-        public IActionResult Index()
+        private readonly IPromotionEngineBusinessRepo _businessRepo;
+
+        public PromotionController(IPromotionEngineBusinessRepo businessRepo)
         {
-            return View();
+            _businessRepo = businessRepo;
+        }
+
+
+        [HttpPost]
+        public  IActionResult CalculateTotalAmout([FromBody] CartItems[] items)
+        {
+
+            if (items == null)
+            {
+                return BadRequest();
+            }
+            return Ok(  );
         }
     }
 }
