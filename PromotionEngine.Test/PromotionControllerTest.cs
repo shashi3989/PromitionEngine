@@ -24,7 +24,7 @@ namespace PromotionEngine.Test
         [Fact]
         public void CalculateTotalAmout_ReturnsOk_WhenModelBodyIsNotEmpty()
         {
-            CartItems[] items=new CartItems[0];
+            CartItem[] items=new CartItem[0];
             Mock<IPromotionEngineBusinessRepo> promotionExecutorMock = new Mock<IPromotionEngineBusinessRepo>();
             PromotionController promotionController = new PromotionController(promotionExecutorMock.Object);
 

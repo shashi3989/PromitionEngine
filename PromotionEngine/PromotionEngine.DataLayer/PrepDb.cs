@@ -20,9 +20,9 @@ namespace PromotionEngine.PromotionEngine.DataLayer
             if (!context.Promotions.Any())
             {
                 context.Promotions.AddRange(
-                    new Promotion() { Id = 1, Amount = 130, PromoProducts = new Dictionary<string, int>() { {"A", 3 } } },
-                    new Promotion() { Id = 2, Amount = 45, PromoProducts = new Dictionary<string, int>() { {"B", 2 } } },
-                    new Promotion() { Id = 3, Amount = 30, PromoProducts = new Dictionary<string, int>() { {"C", 1 }, {"D", 1 } } }
+                     new Promotion() { Id = 1, Amount = 130, PromoProducts = new Dictionary<string, int>() { { "A", 3 } } },
+                     new Promotion() { Id = 2, Amount = 45, PromoProducts = new Dictionary<string, int>() { { "B", 2 } } },
+                     new Promotion() { Id = 3, Amount = 30, PromoProducts = new Dictionary<string, int>() { { "C", 1 }, { "D", 1 } } }
                 );
                 context.SaveChanges();
             }
@@ -33,7 +33,7 @@ namespace PromotionEngine.PromotionEngine.DataLayer
                     new Product() { Name = "A", Price = 50 },
                     new Product() { Name = "B", Price = 30 },
                     new Product() { Name = "C", Price = 20 },
-                    new Product() { Name = "D", Price = 10 }
+                    new Product() { Name = "D", Price = 15 }
                 );
 
                 context.SaveChanges();

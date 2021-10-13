@@ -5,10 +5,9 @@ using System.Threading.Tasks;
 
 namespace PromotionEngine.Models
 {
-    public class CartItem
+    public class CheckOutDetails
     {
-        public string Name { get; set; } 
-
-        public int Quantity { get; set; }
+        public List<CartBilling> Items { get; set; }
+        public int TotalAmount { get; set; }
     }
 }

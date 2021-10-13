@@ -5,10 +5,8 @@ using System.Threading.Tasks;
 
 namespace PromotionEngine.Models
 {
-    public class CartItem
+    public class CartBilling:CartItem
     {
-        public string Name { get; set; } 
-
-        public int Quantity { get; set; }
+        public int Price { get; set; }
     }
 }

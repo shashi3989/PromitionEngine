@@ -14,17 +14,16 @@ namespace PromotionEngine.Controllers
         {
             _businessRepo = businessRepo;
         }
-
-
+        
         [HttpPost]
-        public  IActionResult CalculateTotalAmout([FromBody] CartItems[] items)
+        public  IActionResult CalculateTotalAmout([FromBody] CartItem[] items)
         {
 
             if (items == null)
             {
                 return BadRequest();
             }
-            return Ok(  );
+            return Ok(new { CartItems = items, TotalValue = _businessRepo.CalculateTotalAmount(items) });
         }
     }
 }

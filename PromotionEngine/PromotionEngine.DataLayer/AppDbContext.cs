@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Elasticsearch.Net;
+using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using PromotionEngine.Models;
 using System;
 using System.Collections.Generic;
@@ -12,6 +14,22 @@ namespace PromotionEngine.PromotionEngine.DataLayer
         public AppDbContext(DbContextOptions<AppDbContext> opt) : base(opt)
         {
 
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Promotion>(b =>
+            {
+                b.Property(u => u.PromoProducts)
+                    .HasConversion(
+                        d => JsonConvert.SerializeObject(d),
+                        s => JsonConvert.DeserializeObject<Dictionary<string, int>>(s)
+                    )
+                    .HasMaxLength(5000)
+                    .IsRequired();
+            });
         }
 
         public DbSet<Promotion> Promotions { get; set; }
